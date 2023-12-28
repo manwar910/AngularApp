@@ -1,0 +1,71 @@
+
+<div [hidden]="!IsEdit">
+  <div class="card col-sm-12 ">
+    <div class="card-header">
+      <h4>Customer {{formtext}}</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <label class="col-sm-3 col-form-label fw-bold" for="firstName">First Name </label>
+        <div class="col-sm-4">
+          <div class="form-check form-switch fs-5 pt-sm-1">
+            <input name="firstName" [(ngModel)]="customer.firstName" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-sm-3 col-form-label fw-bold" for="lastName">Last Name </label>
+        <div class="col-sm-4">
+          <div class="form-check form-switch fs-5 pt-sm-1">
+            <input name="lastName" [(ngModel)]="customer.lastName" class="form-control" type="text" >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-sm-3 col-form-label fw-bold" for="Email">Email </label>
+        <div class="col-sm-4">
+          <div class="form-check form-switch fs-5 pt-sm-1">
+            <input name="Email" [(ngModel)]="customer.email" class="form-control" type="email">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-end">
+      <button type="button" (click)="save()" class="btn btn-success col-sm-1 ">{{btnSavetxt}}
+      </button>
+      <button type="button" (click)="Cancel()" class="btn btn-danger col-sm-1 ">Reset
+      </button>
+    </div>
+  </div>
+
+  
+  <!--  -->
+</div>
+<div [hidden]="IsEdit">
+  <div class="col-sm-12 text-end">
+    <button type="button" (click)="AddCustomer()" class="btn btn-primary btn-rounded"> Add
+    </button>
+  </div>
+<table class="table">
+    <thead>
+      <tr>
+         <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Created Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let cus of list">
+      <tr>
+        <th scope="row">{{cus.firstName}}</th>
+        <td>{{cus.lastName}}</td>
+        <td>{{cus.email}}</td>
+        <td>{{cus.createdDate | date:'yyyy-MM-dd'}}</td>
+        <td>
+          <button type="button" (click)="EditCustomer(cus)" class="btn btn-primary">Edit </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
